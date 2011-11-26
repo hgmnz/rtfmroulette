@@ -1,3 +1,6 @@
-<h1><%= @article[:title] %></h1>
-<p><%= @article[:body] %></p>
+<p>Original article: <a href="<%= @source.url %>">here</a>.</p>
+
+<div id="article_content">
+  <%= @source.readable_content %>
+</div>
 <a href="/roulette">Another</a>

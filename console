@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+require 'irb'
+require 'bundler'
+require 'logger'
+Bundler.setup
+require './config/init'
+Dir['./lib/*'].each { |f| require f }
+
+Sequel::Model.db.loggers << Logger.new($stdout)
+
+IRB.start
