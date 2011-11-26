@@ -8,7 +8,6 @@ gem 'foreman'
 gem 'sequel'
 gem 'shotgun', '~> 0.9'
 gem 'ruby-readability', require: 'readability'
-gem 'ruby-debug19'
 
 group :test do
   gem 'rspec'
