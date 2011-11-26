@@ -20,7 +20,7 @@
     <div class="container">
       <div class="content">
         <div class="page-header">
-          <h1>Article Title</h1>
+          <h1><%= @source.title %></h1>
         </div>
         <div class="row">
           <div class="span10">
@@ -32,7 +32,6 @@
               <div class="info">
                 <h3>Article</h3>
                 <dl>
-                  <dt>Title</dt> <dd>... </dd>
                   <dt>Source URL</dt> <dd><a href="<%= @source.url %>">...</a></dd>
                   <dt>Topic</dt> <dd>PostgreSQL</dd>
                   <dt>Views</dt> <dd><%= rand(10) %></dd>

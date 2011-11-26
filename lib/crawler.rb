@@ -48,11 +48,15 @@ class Crawler
   end
 
   def links
-    Nokogiri::HTML(content).xpath('//a')
+    doc.xpath('//a')
+  end
+
+  def title
+    doc.at('//title').text
   end
 
   def store_content
-    Source.create(content: content, url: @url, root_id: @root.id)
+    Source.create(content: content, url: @url, root_id: @root.id, title: title)
   end
 
   def uri
@@ -61,5 +65,9 @@ class Crawler
 
   def source_exists?
     Source.where(url: @url).count > 0
+  end
+
+  def doc
+    @doc ||= Nokogiri::HTML(content)
   end
 end
