@@ -46,3 +46,7 @@ body {
 .topbar .btn {
   border: 0;
 }
+
+#sidebar .buttons a {
+ margin-top: 10px;
+}
