@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+database_url = ENV['SHARED_DATABASE_URL'] || ENV['DB_URL'] || "postgres:///rtfmroulette_development"
+require 'bundler/setup'
+require 'sequel'
+
+Sequel.extension :migration
+DB = Sequel.connect database_url
+Sequel::Migrator.apply(DB, './migrations')
