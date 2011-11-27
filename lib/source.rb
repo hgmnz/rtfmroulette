@@ -9,6 +9,14 @@ class Source < Sequel::Model
     Source.limit(1, rand(Source.count)).first
   end
 
+  def upvote
+    set(upvotes: upvotes + 1).save
+  end
+
+  def downvote
+    set(downvotes: downvotes + 1).save
+  end
+
   def topic
     root.topic
   end

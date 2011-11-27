@@ -16,5 +16,13 @@ end
 
 get '/docs/:id' do |id|
   @source = Source.find(id: id)
-  erb :article
+  erb :doc
+end
+
+post '/docs/:id/upvote' do |id|
+  Source.find(id: id).upvote
+end
+
+post '/docs/:id/downvote' do |id|
+  Source.find(id: id).downvote
 end

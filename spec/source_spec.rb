@@ -34,3 +34,21 @@ describe Source, '#topic' do
     source.topic.should == 'foo'
   end
 end
+
+describe Source, '#upvote' do
+  it 'increments upvotes by one' do
+    source = FactoryGirl.build(:source, upvotes: 4)
+    source.upvote
+
+    source.reload.upvotes.should == 5
+  end
+end
+
+describe Source, '#downvote' do
+  it 'increments downvotes by one' do
+    source = FactoryGirl.build(:source, downvotes: 4)
+    source.downvote
+
+    source.reload.downvotes.should == 5
+  end
+end

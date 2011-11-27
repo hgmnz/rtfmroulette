@@ -1,0 +1,44 @@
+<div id="source_content">
+  <%= @source.readable_content %>
+</div>
+
+<% content_for :page_header do %>
+  <h1><%= @source.title %></h1>
+<% end %>
+
+<% content_for :sidebar do %>
+  <div class="info">
+    <h3>Source info</h3>
+    <dl>
+      <dt>Source URL</dt> <dd><a href="<%= @source.url %>"><%= @source.host %>[...]</a></dd>
+      <dt>Topic</dt> <dd><%= @source.topic %></dd>
+      <!--<dt>Views</dt> <dd><%#= rand(10) %></dd>
+      <dt>Up/Down votes</dt> <dd><%#= rand(10) %>/<%#= rand(10) %></dd>-->
+    </dl>
+  </div>
+  <div class="votes">
+    <h3>Vote</h3>
+    <div id="vote-here">
+      <p>Help keep the bad docs out:</p>
+      <a href="/docs/<%= @source.id %>/upvote" class="btn primary" id="up-vote">:)</a>
+      <a href="/docs/<%= @source.id %>/downvote" class="btn danger" id="down-vote">:(</a>
+    </div>
+    <div id="done-voting" style="display: none">
+      <p>Thanks for voting!</p>
+    </div>
+  </div>
+<% end %>
+
+<% content_for :javascript do %>
+  <script type="text/javascript">
+    $(function() {
+      $('#up-vote, #down-vote').click(function() {
+        $.post($(this).attr('href'), function() {
+            $('.votes #vote-here').hide();
+            $('.votes #done-voting').show();
+          })
+        return false;
+        });
+    });
+  </script>
+<% end %>
