@@ -3,7 +3,7 @@ require 'uri'
 require 'nokogiri'
 
 class Crawler
-  MAX_LEVEL = 5.freeze
+  MAX_DEPTH = 5.freeze
 
   def self.run
     Root.all.each do |root|
@@ -11,10 +11,10 @@ class Crawler
     end
   end
 
-  def initialize(url, root, level = 1)
+  def initialize(url, root, depth = 1)
     @url   = url
     @root  = root
-    @level = level
+    @depth = depth
   end
 
   def crawl
@@ -29,13 +29,13 @@ class Crawler
   end
 
   def crawl_links
-    if @level < MAX_LEVEL
+    if @depth < MAX_DEPTH
       links.each do |link|
         next unless link['href']
         next if %w(/ #).include? link['href'].strip
         absolute_url = (uri + link['href'].strip).to_s
         next unless absolute_url =~ /#{@root.crawl_scope}/
-        self.class.new(absolute_url, @root, @level + 1).crawl
+        Crawler.new(absolute_url, @root, @depth + 1).crawl
       end
     end
   end
