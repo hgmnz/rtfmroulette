@@ -3,7 +3,7 @@ require 'uri'
 require 'nokogiri'
 
 class Crawler
-  MAX_LEVEL = 16.freeze
+  MAX_LEVEL = 5.freeze
 
   def self.run
     Root.all.each do |root|

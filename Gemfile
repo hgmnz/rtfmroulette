@@ -6,13 +6,17 @@ gem 'sinatra-contrib', require: false
 gem 'thin'
 gem 'foreman'
 gem 'sequel'
-gem 'shotgun', '~> 0.9'
 gem 'ruby-readability', require: 'readability', git: 'git://github.com/hgimenez/ruby-readability.git'
 gem 'ruby-debug19'
+
+group :development do
+  gem 'shotgun', '~> 0.9'
+end
 
 group :test do
   gem 'rspec'
   gem 'capybara'
   gem 'factory_girl'
   gem 'i18n'
+  gem 'database_cleaner'
 end
