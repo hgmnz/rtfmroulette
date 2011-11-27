@@ -9,6 +9,10 @@ class Source < Sequel::Model
     Source.limit(1, rand(Source.count)).first
   end
 
+  def topic
+    root.topic
+  end
+
   def host
     uri.host
   end

@@ -25,3 +25,12 @@ describe Source, '#host' do
     source.host.should == 'postgresql.org'
   end
 end
+
+describe Source, '#topic' do
+  it "delegates to it's root" do
+    root   = FactoryGirl.create(:root, topic: 'foo')
+    source = FactoryGirl.build(:source, root: root)
+
+    source.topic.should == 'foo'
+  end
+end
