@@ -18,3 +18,10 @@ describe Source, '.random' do
     3.times.map { Source.random }.uniq.size.should >= 1
   end
 end
+
+describe Source, '#host' do
+  it 'gives the host portion of the url' do
+    source = FactoryGirl.build(:source, url: 'http://postgresql.org/one/two')
+    source.host.should == 'postgresql.org'
+  end
+end

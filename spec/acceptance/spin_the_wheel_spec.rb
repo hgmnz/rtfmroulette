@@ -10,10 +10,5 @@ feature 'spinning the wheel' do
     end
 
     page.should have_content 'The google'
-
-    within '#sidebar' do
-      page.should have_content 'Source URL'
-      page.should have_css "a[href='google.com']"
-    end
   end
 end

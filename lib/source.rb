@@ -8,4 +8,12 @@ class Source < Sequel::Model
   def self.random
     Source.limit(1, rand(Source.count)).first
   end
+
+  def host
+    uri.host
+  end
+
+  def uri
+    URI.parse(url)
+  end
 end

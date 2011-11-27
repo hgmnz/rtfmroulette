@@ -10,7 +10,7 @@
   <div class="info">
     <h3>Article</h3>
     <dl>
-      <dt>Source URL</dt> <dd><a href="<%= @source.url %>">link</a></dd>
+      <dt>Source URL</dt> <dd><a href="<%= @source.url %>"><%= @source.host %></a></dd>
       <dt>Topic</dt> <dd>PostgreSQL</dd>
       <dt>Views</dt> <dd><%= rand(10) %></dd>
       <dt>Up/Down votes</dt> <dd><%= rand(10) %>/<%= rand(10) %></dd>
