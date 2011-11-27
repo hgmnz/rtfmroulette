@@ -6,3 +6,5 @@ require 'sinatra/reloader' if development?
 Dir['lib/*'].each do |f|
   require File.expand_path(f, "#{File.dirname(__FILE__)}/..")
 end
+
+set :root, File.expand_path('..', File.dirname(__FILE__))

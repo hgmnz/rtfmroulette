@@ -1,4 +1,6 @@
 class Source < Sequel::Model
+  many_to_one :root
+
   def readable_content
     Readability::Document.new(content, retry_length: 10).content
   end
