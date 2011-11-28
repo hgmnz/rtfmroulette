@@ -14,6 +14,9 @@ feature 'voting on docs', js: true do
       click_link 'up-vote'
     end
 
-    page.should_not have_css '.votes a'
+    find('#done-voting').should be_visible
+    find('#vote-here').should_not be_visible
+
+    source.reload.upvotes.should be == 1
   end
 end
