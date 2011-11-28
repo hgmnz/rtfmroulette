@@ -6,7 +6,7 @@ require File.expand_path('./config/init.rb', File.dirname(__FILE__))
 require 'sinatra/content_for'
 
 get '/' do
-  erb :home
+  erb :home, layout: false
 end
 
 get '/roulette' do

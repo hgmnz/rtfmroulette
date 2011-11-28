@@ -1,3 +1,77 @@
-<div class="roulette">
-  <a href="/roulette" class="btn large primary">Spin the wheels</a>
-</div>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html>
+  <title>RTFMRoulette</title>
+  <link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css">
+  <link href='http://fonts.googleapis.com/css?family=Rationale' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="/stylesheets/rtfmroulette.css">
+  <body id="home">
+
+    <div class="topbar">
+      <div class="fill">
+        <div class="container">
+          <a class="brand" href="/">RTFMRoulette</a>
+          <ul class="nav">
+            <li><a href="/roulette">Spin</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+        <div id="intro_header">
+          <h1>Random docs at your fingertips</h1>
+        </div>
+    <div class="container">
+
+      <div class="content">
+
+        <div class="row">
+          <div class="span4">
+            <p>The key to understanding your favorite languages, libraries and tools is to use them to solve real problems and <em>read the Fine Manual</em>.</p>
+            <p>But research shows most developers give up after a few minutes because it is hard to find the answers to the problem at hand. You have to either read the entire thing, and who's got the time, or know beforehand what terms to search for, which you never do.</p>
+          </div>
+          <div class="span4">
+            <p>What if you had the answers to other people's problems instead? Who knows, some day they may be your problem.</p>
+            <p>Or even better, it's entirely possible that you are in the 0.01% of users for whom random docs help you solve the very issue you're having!</p>
+          </div>
+          <div class="span4">
+            <p>In any case, it's best to have learned something useful in the process. Go ahead and learn by reading, read the things you didn't even know existed, and continue to level up.</p>
+          </div>
+          <div class="span4">
+            <p>So <em>test your luck</em> and take it for a spin</p>
+            <div class="roulette">
+              <a href="/roulette" class="btn large primary">Spin</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="span16">
+          </div>
+        </div>
+
+      </div>
+
+       <footer>
+         <p><a href="http://github.com/hgimenez/rtfmroulette">Fork on github</a></p>
+      </footer>
+
+    </div>
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"> </script>
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-27319435-1']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+
+    <%= yield_content :javascript %>
+
+  </body>
+</html>
