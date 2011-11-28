@@ -10,6 +10,14 @@ describe Source, '#readable_content' do
     source.readable_content.should include %{<p>This part has more text, and no links</p>}
     source.readable_content.should_not include %{<a href="foo">this is a link</a>}
   end
+
+  it 'converts relative links to absolute' do
+    source = FactoryGirl.build(:source, url: "http://rtfmroulette.com", content: <<-END)
+    <div class="main"><p>This has a <a href="/foo">link</a></p></div>
+    END
+
+    source.readable_content.should include "http://rtfmroulette.com/foo"
+  end
 end
 
 describe Source, '.random' do
