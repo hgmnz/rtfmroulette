@@ -5,8 +5,10 @@ class Source < Sequel::Model
     readable = Readability::Document.new(content, retry_length: 10).content
     doc = Nokogiri::HTML(readable)
     doc.css('a').each do |link|
-      absolute = (self.uri + link['href']).to_s
-      link['href'] = absolute
+      if link['href']
+        absolute = (self.uri + link['href']).to_s
+        link['href'] = absolute
+      end
     end
     doc.to_html
   end

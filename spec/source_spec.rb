@@ -18,6 +18,14 @@ describe Source, '#readable_content' do
 
     source.readable_content.should include "http://rtfmroulette.com/foo"
   end
+
+  it 'does not raise if the link has no href attribute' do
+    source = FactoryGirl.build(:source, content: <<-END)
+    <div class="main"><p>This has not a <a>link</a></p></div>
+    END
+
+    expect { source.readable_content }.to_not raise_error
+  end
 end
 
 describe Source, '.random' do
