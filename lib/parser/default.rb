@@ -20,8 +20,12 @@ module Parser
     def convert_links_to_absolute
       @readable_doc.css('a').each do |link|
         if link['href']
-          absolute = (self.uri + link['href']).to_s
-          link['href'] = absolute
+          begin
+            absolute = (self.uri + link['href']).to_s
+            link['href'] = absolute
+          rescue URI::InvalidURIError
+            link['href'] = ''
+          end
         end
       end
     end

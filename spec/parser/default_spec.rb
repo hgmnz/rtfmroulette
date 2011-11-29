@@ -32,4 +32,13 @@ describe Parser::Default do
 
     expect { parser.readable_content }.to_not raise_error
   end
+
+  it 'does not raise if the link is an invalid uri' do
+    source = FactoryGirl.build(:source, content: <<-END)
+    <div class="main"><p>This has not a <a href="http://string,...">link</a></p></div>
+    END
+
+    parser = Parser::Default.new(source)
+    expect { parser.readable_content }.to_not raise_error
+  end
 end
