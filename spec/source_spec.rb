@@ -1,30 +1,14 @@
 require_relative 'spec_helper'
 
 describe Source, '#readable_content' do
-  it 'gives the good part of the content' do
-    source = FactoryGirl.build(:source, content: <<-END)
-    <div class="main"><p>This part has more text, and no links</p> </div>
-    <div class="side"><a href="foo">this is a link</a></div>
-    END
+  it 'delegates parsing to the default parser' do
+    parser = double(:parser, readable_content: 'hi')
+    Parser::Default.stub!(new: parser)
+    source = FactoryGirl.build(:source)
+    source.stub!(parser: parser)
 
-    source.readable_content.should include %{<p>This part has more text, and no links</p>}
-    source.readable_content.should_not include %{<a href="foo">this is a link</a>}
-  end
-
-  it 'converts relative links to absolute' do
-    source = FactoryGirl.build(:source, url: "http://rtfmroulette.com", content: <<-END)
-    <div class="main"><p>This has a <a href="/foo">link</a></p></div>
-    END
-
-    source.readable_content.should include "http://rtfmroulette.com/foo"
-  end
-
-  it 'does not raise if the link has no href attribute' do
-    source = FactoryGirl.build(:source, content: <<-END)
-    <div class="main"><p>This has not a <a>link</a></p></div>
-    END
-
-    expect { source.readable_content }.to_not raise_error
+    parser.should_receive(:readable_content)
+    source.readable_content.should == 'hi'
   end
 end
 

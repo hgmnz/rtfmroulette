@@ -6,7 +6,7 @@ database_url = ENV['SHARED_DATABASE_URL'] || "postgres:///rtfmroulette_#{setting
 DB = Sequel.connect(database_url)
 Sequel::Model.plugin :timestamps
 
-Dir['lib/*'].each do |f|
+Dir['lib/**/*.rb'].each do |f|
   require File.expand_path(f, "#{File.dirname(__FILE__)}/..")
 end
 

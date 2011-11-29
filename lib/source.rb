@@ -2,15 +2,7 @@ class Source < Sequel::Model
   many_to_one :root
 
   def readable_content
-    readable = Readability::Document.new(content, retry_length: 10).content
-    doc = Nokogiri::HTML(readable)
-    doc.css('a').each do |link|
-      if link['href']
-        absolute = (self.uri + link['href']).to_s
-        link['href'] = absolute
-      end
-    end
-    doc.to_html
+    Parser::Default.new(self).readable_content
   end
 
   def self.random
@@ -35,5 +27,9 @@ class Source < Sequel::Model
 
   def uri
     URI.parse(url)
+  end
+
+  def parser
+
   end
 end
