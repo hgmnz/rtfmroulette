@@ -1,3 +1,4 @@
+require 'active_support/inflector'
 class Source < Sequel::Model
   many_to_one :root
 
