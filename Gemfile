@@ -7,6 +7,7 @@ gem 'thin'
 gem 'foreman'
 gem 'sequel'
 gem 'ruby-readability', require: 'readability', git: 'git://github.com/hgimenez/ruby-readability.git', branch: 'new_gem'
+gem 'activesupport'
 
 group :development do
   gem 'shotgun', '~> 0.9'
