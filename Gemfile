@@ -9,6 +9,7 @@ gem 'sequel'
 gem 'ruby-readability', require: 'readability', git: 'git://github.com/hgimenez/ruby-readability.git', branch: 'new_gem'
 gem 'activesupport'
 gem 'i18n'
+gem 'newrelic_rpm'
 
 group :development do
   gem 'shotgun', '~> 0.9'
