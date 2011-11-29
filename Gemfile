@@ -8,6 +8,7 @@ gem 'foreman'
 gem 'sequel'
 gem 'ruby-readability', require: 'readability', git: 'git://github.com/hgimenez/ruby-readability.git', branch: 'new_gem'
 gem 'activesupport'
+gem 'i18n'
 
 group :development do
   gem 'shotgun', '~> 0.9'
@@ -17,6 +18,5 @@ group :test do
   gem 'rspec'
   gem 'capybara'
   gem 'factory_girl'
-  gem 'i18n'
   gem 'database_cleaner'
 end
