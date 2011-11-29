@@ -12,6 +12,10 @@ module Parser
       @readable_doc.to_html
     end
 
+    def extract_readable_doc
+      Nokogiri::HTML(Readability::Document.new(@raw_content, retry_length: 10).content)
+    end
+
     protected
     def convert_links_to_absolute
       @readable_doc.css('a').each do |link|
@@ -24,10 +28,6 @@ module Parser
 
     def uri
       URI.parse(@url)
-    end
-
-    def extract_readable_doc
-      Nokogiri::HTML(Readability::Document.new(@raw_content, retry_length: 10).content)
     end
   end
 end
