@@ -2,7 +2,7 @@ class Source < Sequel::Model
   many_to_one :root
 
   def readable_content
-    Parser::Default.new(self).readable_content
+    parser_class.new(self).readable_content
   end
 
   def self.random
@@ -29,7 +29,7 @@ class Source < Sequel::Model
     URI.parse(url)
   end
 
-  def parser
-
+  def parser_class
+    @parser_class ||= Parser::Default
   end
 end
