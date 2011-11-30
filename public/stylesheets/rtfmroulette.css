@@ -75,3 +75,14 @@ body {
 #home .roulette {
   padding-left: 80px;
 }
+
+/* ruby-doc.org specific */
+.method-heading {
+  font-weight: bold;
+  font-size: 14px;
+  padding-bottom: 4px;
+}
+
+.method-section {
+  border-bottom: 1px solid #eee;
+}
