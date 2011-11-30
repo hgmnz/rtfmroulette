@@ -19,7 +19,26 @@ describe Parser::RubydocOrg do
     source = FactoryGirl.build(:source, url: 'http://ruby-doc.org', content: raw_content)
     parser = Parser::RubydocOrg.new(source)
 
-    parser.readable_content.should include %{<div>This is the main content</div>}
-    parser.readable_content.should_not include %{<div>Should not appear</div>}
+    readable_content = parser.readable_content
+
+    readable_content.should include %{<div>This is the main content</div>}
+    readable_content.should_not include %{<div>Should not appear</div>}
+  end
+
+  it 'removes the method sources' do
+    source = FactoryGirl.build(:source, url: 'http://ruby-doc.org', content: <<-END)
+      <html>
+        <div id="documentation"> Real content
+          <span class="method-click-advice">click to toggle source</span>
+          <div class="method-source-code">should be removed</div>
+        </div>
+      </html>
+    END
+    parser = Parser::RubydocOrg.new(source)
+
+    readable_content = parser.readable_content
+
+    readable_content.should_not include "click to toggle source"
+    readable_content.should_not include "should be removed"
   end
 end
