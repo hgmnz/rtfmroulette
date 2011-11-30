@@ -9,6 +9,7 @@ module Parser
 
     def readable_content
       convert_links_to_absolute
+      add_prettyprint_classes
       @readable_doc.to_html
     end
 
@@ -27,6 +28,12 @@ module Parser
             link['href'] = ''
           end
         end
+      end
+    end
+
+    def add_prettyprint_classes
+      @readable_doc.css('pre').each do |pre|
+        pre['class'] = 'prettyprint'
       end
     end
 

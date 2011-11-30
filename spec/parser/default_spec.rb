@@ -41,4 +41,13 @@ describe Parser::Default do
     parser = Parser::Default.new(source)
     expect { parser.readable_content }.to_not raise_error
   end
+
+  it 'adds the prettyprint class to pre tags' do
+    source = FactoryGirl.build(:source, content: <<-END)
+    <pre>This is some code</pre>
+    END
+
+    parser = Parser::Default.new(source)
+    parser.readable_content.should include %{<pre class="prettyprint">}
+  end
 end
