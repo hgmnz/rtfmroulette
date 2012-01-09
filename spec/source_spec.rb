@@ -53,15 +53,3 @@ describe Source, '#downvote' do
   end
 end
 
-describe Source, '#parser_class' do
-  it 'uses the default parser if no strategy is available' do
-    source = FactoryGirl.build(:source)
-    source.parser_class.should == Parser::Default
-  end
-
-  it 'uses a parser based on the host name if available' do
-    class Parser::RubydocOrg; end
-    source = FactoryGirl.build(:source, url: 'http://ruby-doc.org/core-1.9.3/')
-    source.parser_class.should == Parser::RubydocOrg
-  end
-end

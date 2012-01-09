@@ -3,7 +3,7 @@ class Source < Sequel::Model
   many_to_one :root
 
   def readable_content
-    parser_class.new(self).readable_content
+    ParserFactory.create_parser(self).readable_content
   end
 
   def self.random
@@ -28,18 +28,5 @@ class Source < Sequel::Model
 
   def uri
     URI.parse(url)
-  end
-
-  def parser_class
-    @parser_class ||= (locate_parser || Parser::Default)
-  end
-
-  def locate_parser
-    class_name = uri.host.
-      gsub('-', '').
-      split('.').
-      map(&:classify).
-      join('')
-    "Parser::#{class_name}".constantize if Parser.const_defined?(class_name)
   end
 end
