@@ -15,6 +15,9 @@ require File.join(File.dirname(__FILE__), '../rtfmroulette')
 
 Capybara.app = Sinatra::Application.new
 
+require 'capybara/webkit'
+Capybara.javascript_driver = :webkit
+
 
 # factory_girl hack
 ObjectSpace.each_object(Class) do |klass|
