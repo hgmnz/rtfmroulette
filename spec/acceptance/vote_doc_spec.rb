@@ -14,7 +14,7 @@ feature 'voting on docs', js: true do
       click_link 'up-vote'
     end
 
-    find('#done-voting').should be_visible
+    Capybara.wait_until { find('#done-voting').should be_visible }
     find('#vote-here').should_not be_visible
 
     source.reload.upvotes.should be == 1
